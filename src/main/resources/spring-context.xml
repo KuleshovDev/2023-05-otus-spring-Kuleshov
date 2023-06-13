@@ -3,17 +3,25 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="questionService" class="ru.otus.service.QuestionService">
+    <bean id="runTestImpl" class="ru.otus.service.RunTestServiceImpl">
+        <constructor-arg index="0" ref="printServiceImpl"/>
+    </bean>
+
+    <bean id="dataFromResourceFileServiceImpl" class="ru.otus.service.DataFromResourceFileServiceImpl">
         <constructor-arg index="0" value="questionsAndAnswers.csv"/>
     </bean>
 
-    <bean id="answerService" class="ru.otus.service.AnswerService">
-        <constructor-arg index="0" value="questionsAndAnswers.csv"/>
+    <bean id="questionServiceImpl" class="ru.otus.service.QuestionServiceImpl">
+        <constructor-arg index="0" ref="dataFromResourceFileServiceImpl"/>
     </bean>
 
-    <bean id="printService" class="ru.otus.service.PrintService">
-        <constructor-arg ref="questionService"/>
-        <constructor-arg ref="answerService"/>
+    <bean id="answerServiceImpl" class="ru.otus.service.AnswerServiceImpl">
+        <constructor-arg index="0" ref="dataFromResourceFileServiceImpl"/>
+    </bean>
+
+    <bean id="printServiceImpl" class="ru.otus.service.PrintServiceImpl">
+        <constructor-arg ref="questionServiceImpl"/>
+        <constructor-arg ref="answerServiceImpl"/>
     </bean>
 
 </beans>

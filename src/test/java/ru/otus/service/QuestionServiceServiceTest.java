@@ -19,14 +19,19 @@ class QuestionServiceTest {
 
     private QuestionService questionService;
 
+    private DataFromResourceFileService dataFromResourceFileService;
+
     @BeforeEach
     public void setUp() {
-        questionService = new QuestionService("questionsAndAnswers.csv");
+        dataFromResourceFileService = new DataFromResourceFileServiceImpl("questionsAndAnswers.csv");
+
+        DataFromResourceFileService dataFromResourceFileServiceImpl = new DataFromResourceFileServiceImpl("questionsAndAnswers.csv");
+        questionService = new QuestionServiceImpl(dataFromResourceFileServiceImpl);
     }
 
     @Test
     void getDataFromResourceFile() {
-        InputStream inputStream = questionService.getDataFromResourceFile();
+        InputStream inputStream = dataFromResourceFileService.getDataFromResourceFile();
         assertNotNull(inputStream);
     }
 
