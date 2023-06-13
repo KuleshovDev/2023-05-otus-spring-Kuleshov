@@ -1,8 +1,8 @@
-package ru.otus.service;
+package ru.otus.dao;
 
 import java.io.InputStream;
 
-public interface DataFromResourceFileService {
+public interface DataFromResourceFileDao {
 
     InputStream getDataFromResourceFile();
 }

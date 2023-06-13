@@ -1,5 +1,6 @@
 package ru.otus.service;
 
+import ru.otus.dao.DataFromResourceFileDao;
 import ru.otus.model.Question;
 
 import java.io.BufferedReader;
@@ -10,10 +11,10 @@ import java.util.List;
 
 public class QuestionServiceImpl implements QuestionService {
 
-    private final DataFromResourceFileService dataFromResourceFileService;
+    private final DataFromResourceFileDao dataFromResourceFileDao;
 
-    public QuestionServiceImpl(DataFromResourceFileService dataFromResourceFileService) {
-        this.dataFromResourceFileService = dataFromResourceFileService;
+    public QuestionServiceImpl(DataFromResourceFileDao dataFromResourceFileDao) {
+        this.dataFromResourceFileDao = dataFromResourceFileDao;
     }
 
     @Override
@@ -21,7 +22,7 @@ public class QuestionServiceImpl implements QuestionService {
         List<Question> questionsList = new ArrayList<>();
         try {
             BufferedReader reader = new BufferedReader(
-                    new InputStreamReader(dataFromResourceFileService.getDataFromResourceFile()));
+                    new InputStreamReader(dataFromResourceFileDao.getDataFromResourceFile()));
             String line;
             int questionNumber = 1;
             while ((line = reader.readLine()) != null) {

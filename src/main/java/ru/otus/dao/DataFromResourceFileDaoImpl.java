@@ -1,11 +1,11 @@
-package ru.otus.service;
+package ru.otus.dao;
 
 import java.io.InputStream;
 
-public class DataFromResourceFileServiceImpl implements DataFromResourceFileService {
+public class DataFromResourceFileDaoImpl implements DataFromResourceFileDao {
     private final String file;
 
-    public DataFromResourceFileServiceImpl(String file) {
+    public DataFromResourceFileDaoImpl(String file) {
         this.file = file;
     }
 

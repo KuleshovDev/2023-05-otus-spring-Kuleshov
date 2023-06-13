@@ -7,16 +7,16 @@
         <constructor-arg index="0" ref="printServiceImpl"/>
     </bean>
 
-    <bean id="dataFromResourceFileServiceImpl" class="ru.otus.service.DataFromResourceFileServiceImpl">
+    <bean id="dataFromResourceFileDaoImpl" class="ru.otus.dao.DataFromResourceFileDaoImpl">
         <constructor-arg index="0" value="questionsAndAnswers.csv"/>
     </bean>
 
     <bean id="questionServiceImpl" class="ru.otus.service.QuestionServiceImpl">
-        <constructor-arg index="0" ref="dataFromResourceFileServiceImpl"/>
+        <constructor-arg index="0" ref="dataFromResourceFileDaoImpl"/>
     </bean>
 
     <bean id="answerServiceImpl" class="ru.otus.service.AnswerServiceImpl">
-        <constructor-arg index="0" ref="dataFromResourceFileServiceImpl"/>
+        <constructor-arg index="0" ref="dataFromResourceFileDaoImpl"/>
     </bean>
 
     <bean id="printServiceImpl" class="ru.otus.service.PrintServiceImpl">

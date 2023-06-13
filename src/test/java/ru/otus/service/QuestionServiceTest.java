@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import ru.otus.dao.DataFromResourceFileDao;
+import ru.otus.dao.DataFromResourceFileDaoImpl;
 import ru.otus.model.Question;
 
 import java.io.InputStream;
@@ -19,19 +21,19 @@ class QuestionServiceTest {
 
     private QuestionService questionService;
 
-    private DataFromResourceFileService dataFromResourceFileService;
+    private DataFromResourceFileDao dataFromResourceFileDao;
 
     @BeforeEach
     public void setUp() {
-        dataFromResourceFileService = new DataFromResourceFileServiceImpl("questionsAndAnswers.csv");
+        dataFromResourceFileDao = new DataFromResourceFileDaoImpl("questionsAndAnswers.csv");
 
-        DataFromResourceFileService dataFromResourceFileServiceImpl = new DataFromResourceFileServiceImpl("questionsAndAnswers.csv");
-        questionService = new QuestionServiceImpl(dataFromResourceFileServiceImpl);
+        DataFromResourceFileDao dataFromResourceFileDaoImpl = new DataFromResourceFileDaoImpl("questionsAndAnswers.csv");
+        questionService = new QuestionServiceImpl(dataFromResourceFileDaoImpl);
     }
 
     @Test
     void getDataFromResourceFile() {
-        InputStream inputStream = dataFromResourceFileService.getDataFromResourceFile();
+        InputStream inputStream = dataFromResourceFileDao.getDataFromResourceFile();
         assertNotNull(inputStream);
     }
 
