@@ -6,7 +6,11 @@
 
     <groupId>ru.otus</groupId>
     <artifactId>spring-05-2023</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>HomeWork-1</module>
+    </modules>
 
 
     <properties>
